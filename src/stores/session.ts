@@ -8,7 +8,9 @@ interface SessionState {
 }
 
 export const useSession = create<SessionState>((set) => ({
-  isAuthenticated: false,
+  // Public demonstration build: sample-only data opens directly to the dashboard.
+  // Replace this with backend session discovery before production integration.
+  isAuthenticated: true,
   demoMode: true,
   signInDemo: () => set({ isAuthenticated: true, demoMode: true }),
   signOut: () => set({ isAuthenticated: false }),

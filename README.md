@@ -28,7 +28,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open `http://127.0.0.1:4173`. Use the pre-filled demo credentials on the login page and select **Enter demo portal**.
+Open `http://127.0.0.1:4173`. The public demonstration build opens directly to the sample dashboard. Authentication routes remain available for future backend integration.
 
 ## Build and test
 
