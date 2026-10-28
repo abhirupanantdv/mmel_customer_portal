@@ -1,8 +1,8 @@
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo({ compact = false, hideLabel = false }: { compact?: boolean; hideLabel?: boolean }) {
   return (
     <div className="brand-logo">
       <img src="/assets/mh-money-express-logo.svg" alt="MH Money Express" />
-      {!compact && <span>Customer portal</span>}
+      {!compact && !hideLabel && <span>Customer portal</span>}
     </div>
   )
 }

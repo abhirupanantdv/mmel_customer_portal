@@ -34,7 +34,7 @@ export function AppShell() {
   return (
     <div className={collapsed ? 'app-shell sidebar-collapsed' : 'app-shell'}>
       <aside className={mobileOpen ? 'sidebar mobile-open' : 'sidebar'} aria-label="Primary navigation">
-        <div className="sidebar-head"><Logo compact={collapsed} /><button className="mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu"><X /></button></div>
+        <div className="sidebar-head"><Logo compact={collapsed} hideLabel /><button className="mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu"><X /></button></div>
         <nav>
           {navigation.map(({ to, label, icon: Icon }) => (
             <NavLink key={to} to={to} onClick={() => setMobileOpen(false)} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
