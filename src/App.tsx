@@ -1,13 +1,24 @@
+import { useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { AppShell } from './app/AppShell'
+import { LandingPage } from './app/LandingPage'
+import { TransactionDetailsPage, TransactionsPage } from './app/TransactionsPage'
+import { WalletPage, WalletRequestPage, WalletStatementPage, WalletTransactionsPage } from './app/WalletPage'
+import { VerifyCardPage } from './app/VerifyCardPage'
+import { MembershipCardPage } from './app/MembershipCardPage'
+import { StatementsPage } from './app/StatementsPage'
+import { LimitsPage } from './app/LimitsPage'
+import { DashboardPage } from './app/DashboardPage'
+import { SupportPage } from './app/SupportPage'
+import { NotificationsPage } from './app/NotificationsPage'
+import { GiftsPage } from './app/GiftsPage'
 import { useSession } from './stores/session'
 import {
-  ActivityPage, BranchesPage, DashboardPage, ForgotPasswordPage, ForexPage,
-  LimitsPage, LoginPage, MembershipCardPage, MoneyTransferPage, NotFoundPage,
-  NotificationsPage, PlaceholderPage, ProfilePage, RegisterPage, SettingsPage,
-  StatementsPage, SupportPage, TransactionsPage, WalletPage,
+  ActivityPage, BranchesPage, ForgotPasswordPage, ForexPage,
+  LoginPage, MoneyTransferPage, NotFoundPage,
+  PlaceholderPage, ProfilePage, RegisterPage, SettingsPage,
 } from './app/pages'
-import { Banknote, CalendarDays, CreditCard, FileText, Send, UserRound, WalletCards } from 'lucide-react'
+import { Banknote, CalendarDays, FileText, Send, UserRound } from 'lucide-react'
 
 function Protected() {
   const authenticated = useSession((s) => s.isAuthenticated)
@@ -16,11 +27,18 @@ function Protected() {
 }
 
 export default function App() {
+  const isReady = useSession((s) => s.isReady)
+  const restoreSession = useSession((s) => s.restoreSession)
+
+  useEffect(() => { void restoreSession() }, [restoreSession])
+  if (!isReady) return <div className="session-loading">Loading secure session…</div>
+
   return <Routes>
-    <Route path="/" element={<Navigate to="/dashboard" replace />} />
+    <Route path="/" element={<LandingPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
     <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+    <Route path="/verify-card/:token" element={<VerifyCardPage />} />
     <Route element={<Protected />}>
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/profile" element={<ProfilePage />} />
@@ -36,12 +54,14 @@ export default function App() {
       <Route path="/money-transfer/beneficiaries" element={<PlaceholderPage title="Beneficiaries" description="Manage destination-specific recipient information through backend-configured fields." icon={UserRound} />} />
       <Route path="/money-transfer/history" element={<PlaceholderPage title="Transfer history" description="Review internal and provider references with backend-confirmed progress." icon={Send} />} />
       <Route path="/money-transfer/:id" element={<PlaceholderPage title="Transfer details" description="Follow KYC, compliance, payment and authorised provider status transitions." icon={Send} />} />
+      <Route path="/gifts" element={<GiftsPage />} />
       <Route path="/wallet" element={<WalletPage />} />
-      <Route path="/wallet/add-money" element={<PlaceholderPage title="Add money" description="Create a funding request using an approved method. Funds are never credited until backend settlement confirmation." icon={WalletCards} />} />
-      <Route path="/wallet/transactions" element={<TransactionsPage />} />
-      <Route path="/wallet/statement" element={<StatementsPage />} />
+      <Route path="/wallet/add-money" element={<WalletRequestPage />} />
+      <Route path="/wallet/withdraw" element={<WalletRequestPage requestType="Withdrawal" />} />
+      <Route path="/wallet/transactions" element={<WalletTransactionsPage />} />
+      <Route path="/wallet/statement" element={<WalletStatementPage />} />
       <Route path="/transactions" element={<TransactionsPage />} />
-      <Route path="/transactions/:id" element={<PlaceholderPage title="Transaction details" description="View charges, exchange rates, status history, related references and available receipt actions." icon={CreditCard} />} />
+      <Route path="/transactions/:id" element={<TransactionDetailsPage />} />
       <Route path="/statements" element={<StatementsPage />} />
       <Route path="/limits" element={<LimitsPage />} />
       <Route path="/activity" element={<ActivityPage />} />

@@ -1,0 +1,2 @@
+include requirements.txt
+recursive-include mmel_customer_portal *.css *.csv *.html *.ico *.js *.json *.md *.png *.py *.svg *.txt *.woff *.woff2

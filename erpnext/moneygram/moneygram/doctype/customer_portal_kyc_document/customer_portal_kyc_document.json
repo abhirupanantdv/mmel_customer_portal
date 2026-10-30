@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "KYC-.YYYY.-.#####",
+ "creation": "2026-10-29 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "document_section", "status", "document_category", "document_name", "document_number", "document_type", "document_label", "column_break_document", "customer", "membership_card", "attachment", "expiry_date", "submitted_on",
+  "review_section", "reviewed_by", "reviewed_on", "review_remarks"
+ ],
+ "fields": [
+  {"fieldname": "document_section", "fieldtype": "Section Break", "label": "Customer KYC Document"},
+  {"default": "Draft", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Verification Status", "options": "Draft\nVerified\nRejected", "reqd": 1},
+  {"fieldname": "document_category", "fieldtype": "Select", "in_list_view": 1, "label": "Document Type", "options": "Proof of Identity\nProof of Address\nPhoto", "read_only": 1},
+  {"fieldname": "document_name", "fieldtype": "Data", "in_list_view": 1, "label": "Document Name", "read_only": 1},
+  {"fieldname": "document_number", "fieldtype": "Data", "label": "Document Number", "read_only": 1},
+  {"fieldname": "document_type", "fieldtype": "Select", "hidden": 1, "label": "Internal Document Code", "options": "PASSPORT\nDRIVER_LICENCE\nVOTER_ID\nTIN_EVIDENCE\nOFFICIAL_ID\nPROOF_OF_ADDRESS\nCUSTOMER_PHOTO", "read_only": 1, "reqd": 1},
+  {"fieldname": "document_label", "fieldtype": "Data", "hidden": 1, "label": "Legacy Document Label", "read_only": 1, "reqd": 1},
+  {"fieldname": "column_break_document", "fieldtype": "Column Break"},
+  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Customer", "options": "Customer", "read_only": 1, "reqd": 1},
+  {"fieldname": "membership_card", "fieldtype": "Link", "label": "Membership Card", "options": "Customer Membership Card", "read_only": 1, "reqd": 1},
+  {"fieldname": "attachment", "fieldtype": "Attach", "label": "Secure Attachment", "read_only": 1, "reqd": 1},
+  {"fieldname": "expiry_date", "fieldtype": "Date", "label": "Expiry Date", "read_only": 1},
+  {"fieldname": "submitted_on", "fieldtype": "Datetime", "label": "Submitted On", "read_only": 1},
+  {"fieldname": "review_section", "fieldtype": "Section Break", "label": "Operator Verification"},
+  {"fieldname": "reviewed_by", "fieldtype": "Link", "label": "Reviewed By", "options": "User", "read_only": 1},
+  {"fieldname": "reviewed_on", "fieldtype": "Datetime", "label": "Reviewed On", "read_only": 1},
+  {"fieldname": "review_remarks", "fieldtype": "Small Text", "label": "Review Remarks"}
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-29 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Moneygram",
+ "name": "Customer Portal KYC Document",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1}
+ ],
+ "search_fields": "customer,membership_card,document_category,document_name,document_number,status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "document_label",
+ "track_changes": 1
+}

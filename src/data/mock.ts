@@ -34,9 +34,3 @@ export const chartData = [
   { month: 'Sep', forex: 3400, transfers: 2400, inflow: 2000, outflow: 2250 },
   { month: 'Oct', forex: 4250, transfers: 2750, inflow: 3150, outflow: 2500 },
 ]
-
-export const notifications = [
-  { id: '1', title: 'Forex booking ready', body: 'Booking FX-260194 is ready for collection at Suva Central.', time: '12 min ago', unread: true },
-  { id: '2', title: 'Wallet credited', body: 'A confirmed credit of FJD 750.00 was posted to your demo wallet.', time: '2 days ago', unread: true },
-  { id: '3', title: 'KYC verified', body: 'Your customer verification is current.', time: '5 days ago', unread: false },
-]

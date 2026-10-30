@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmel-customer-portal"
+version = "0.2.0"
+description = "Installable Frappe website app for the MH Money Express customer portal"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "MH Money Express" }]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["mmel_customer_portal*"]

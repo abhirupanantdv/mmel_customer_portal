@@ -1,0 +1,28 @@
+{
+ "actions": [],
+ "creation": "2026-10-29 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["enabled", "company", "currency", "accounts_section", "wallet_liability_account", "funding_account", "withdrawal_account", "controls_section", "allow_withdrawals", "minimum_request_amount", "maximum_request_amount"],
+ "fields": [
+  {"default": "0", "fieldname": "enabled", "fieldtype": "Check", "label": "Enable Customer Wallet"},
+  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1},
+  {"default": "FJD", "fieldname": "currency", "fieldtype": "Link", "label": "Wallet Currency", "options": "Currency", "reqd": 1},
+  {"fieldname": "accounts_section", "fieldtype": "Section Break", "label": "Accounting"},
+  {"fieldname": "wallet_liability_account", "fieldtype": "Link", "label": "Customer Wallet Liability Account", "options": "Account", "reqd": 1},
+  {"fieldname": "funding_account", "fieldtype": "Link", "label": "Funding Clearing Account", "options": "Account", "reqd": 1},
+  {"fieldname": "withdrawal_account", "fieldtype": "Link", "label": "Withdrawal Clearing Account", "options": "Account", "reqd": 1},
+  {"fieldname": "controls_section", "fieldtype": "Section Break", "label": "Portal Controls"},
+  {"default": "1", "fieldname": "allow_withdrawals", "fieldtype": "Check", "label": "Allow Withdrawal Requests"},
+  {"default": "1", "fieldname": "minimum_request_amount", "fieldtype": "Currency", "label": "Minimum Request Amount", "precision": "2", "reqd": 1},
+  {"default": "10000", "fieldname": "maximum_request_amount", "fieldtype": "Currency", "label": "Maximum Request Amount", "precision": "2", "reqd": 1}
+ ],
+ "issingle": 1,
+ "modified": "2026-10-29 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Moneygram",
+ "name": "Customer Wallet Settings",
+ "owner": "Administrator",
+ "permissions": [{"create": 1, "read": 1, "role": "System Manager", "write": 1}],
+ "track_changes": 1
+}

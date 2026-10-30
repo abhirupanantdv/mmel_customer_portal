@@ -1,0 +1,33 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "WLT-.YYYY.-.#####",
+ "creation": "2026-10-29 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["customer", "customer_name", "portal_user", "status", "currency", "balances_section", "available_balance", "held_balance", "total_balance", "last_transaction_on"],
+ "fields": [
+  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Customer", "options": "Customer", "reqd": 1, "unique": 1},
+  {"fieldname": "customer_name", "fieldtype": "Data", "in_list_view": 1, "label": "Customer Name", "read_only": 1},
+  {"fieldname": "portal_user", "fieldtype": "Link", "label": "Portal User", "options": "User", "read_only": 1},
+  {"default": "Active", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Active\nFrozen\nClosed", "reqd": 1},
+  {"default": "FJD", "fieldname": "currency", "fieldtype": "Link", "label": "Currency", "options": "Currency", "read_only": 1, "reqd": 1},
+  {"fieldname": "balances_section", "fieldtype": "Section Break", "label": "Authoritative Balances"},
+  {"default": "0", "fieldname": "available_balance", "fieldtype": "Currency", "in_list_view": 1, "label": "Available Balance", "precision": "2", "read_only": 1},
+  {"default": "0", "fieldname": "held_balance", "fieldtype": "Currency", "label": "Held Balance", "precision": "2", "read_only": 1},
+  {"default": "0", "fieldname": "total_balance", "fieldtype": "Currency", "label": "Total Balance", "precision": "2", "read_only": 1},
+  {"fieldname": "last_transaction_on", "fieldtype": "Datetime", "label": "Last Transaction On", "read_only": 1}
+ ],
+ "index_web_pages_for_search": 0,
+ "modified": "2026-10-29 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Moneygram",
+ "name": "Customer Wallet",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [{"create": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "write": 1}],
+ "search_fields": "customer,customer_name,portal_user",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
