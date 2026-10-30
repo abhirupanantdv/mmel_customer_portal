@@ -384,6 +384,7 @@ Frappe application packaging verification performed on 30 October 2026:
 - `git diff --check` passed.
 - The app was not installed or smoke-tested on `mmel.local` during this local packaging change.
 - The first remote `bench get-app` attempt exposed a PEP 517 editable-build issue: `setup.py` imported the package before it was installed, and the hyphenated project name caused Bench to select a hyphenated app directory. Packaging metadata now uses the underscore app name consistently and a self-contained version value.
+- The next remote attempt exposed floating frontend dependency risk: Yarn resolved jsdom 30, which requires Node 24.15.0 while the Bench server runs Node 24.11.1. All direct frontend dependencies are now exactly pinned, with jsdom 29.1.1 retained for Node 24.11 compatibility.
 
 ## 4. Pending tasks
 
