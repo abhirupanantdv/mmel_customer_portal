@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mmel-customer-portal"
+name = "mmel_customer_portal"
 version = "0.2.0"
 description = "Installable Frappe website app for the MH Money Express customer portal"
 requires-python = ">=3.10"

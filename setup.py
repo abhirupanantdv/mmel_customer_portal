@@ -1,11 +1,8 @@
 from setuptools import find_packages, setup
 
-from mmel_customer_portal import __version__
-
-
 setup(
 	name="mmel_customer_portal",
-	version=__version__,
+	version="0.2.0",
 	description="MH Money Express customer portal for ERPNext",
 	author="MH Money Express",
 	author_email="",

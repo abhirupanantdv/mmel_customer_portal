@@ -383,6 +383,7 @@ Frappe application packaging verification performed on 30 October 2026:
 - The new Frappe package/controller Python files and the adjusted membership API passed syntax checks; hook metadata and route rules loaded successfully.
 - `git diff --check` passed.
 - The app was not installed or smoke-tested on `mmel.local` during this local packaging change.
+- The first remote `bench get-app` attempt exposed a PEP 517 editable-build issue: `setup.py` imported the package before it was installed, and the hyphenated project name caused Bench to select a hyphenated app directory. Packaging metadata now uses the underscore app name consistently and a self-contained version value.
 
 ## 4. Pending tasks
 
